@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question</title>
+    <link rel="stylesheet" href="css/answer.css">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<!-- <body>
+    <div class="container">
+        <h1 class="good" th:if="${answer}" style="color: red;">正解！</h1>
+        <h1 class="bad" th:unless="${answer}" style="color: blue;">ざんねん・・・</h1>
+
+        <h3 th:text="${quiz.explanation}"></h3>
+        <a th:href="@{/quizzes}" class="btn btn-lg btn-success">戻る</a>
+    </div>
+</body> -->
+
+<body class="good" th:if="${answer}" style="background-color:#fde2e2;">
+    <div class="container">
+        <div>
+            <h1 style="color: red;">正解！</h1>
+            <h3 th:text="${quiz.explanation}" style="border: red solid;"></h3>
+            <a th:href="@{/quizzes}" class="btn btn-lg btn-success">戻る</a>
+            <a th:if=${nextId} th:href="@{/quizzes/{id}(id=${nextId})}" class="btn btn-lg btn-success">次の問題</a>
+          
+        </div>
+</body>
+
+<body class="bad" th:unless="${answer}" style="background-color:#dbd4fa;">
+    <div class="container">
+        <div>
+            <h1 class="bad" style="color: blue;">ざんねん・・・</h1>
+
+            <h3 th:text="${quiz.explanation}" style="border: darkblue solid;"></h3>
+            <a th:href="@{/quizzes}" class="btn btn-lg btn-success">戻る</a>
+            <a th:if=${nextId} th:href="@{/quizzes/{id}(id=${nextId})}" class="btn btn-lg btn-primary">次の問題</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

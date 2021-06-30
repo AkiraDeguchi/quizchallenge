@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規作成</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="css/new.css">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+
+<body style="background-color:#d4edfa;">
+
+    <div th:fragment="main">
+        <div class="container">
+
+            <div>
+                <h1>【管理者ページ】</h1>
+
+                <div class="data">
+                    <a th:href="@{/h2-console}" class="btn btn-outline-secondary btn-user">データ確認画面</a>
+                </div>
+                <div class="back">
+                    <a th:href="@{/quizzes}" class="btn  btn-outline-success btn-user">トップページに戻る</a>
+                </div><br><br><br>
+
+            </div>
+            <form th:action="@{/quizzes/submit}" th:method="post" th:object="${form}">
+                <h3>【新規問題登録】</h3>
+                <div class="question">
+                    <div>
+                        <label for="title">タイトル:トップページに表示されるテキスト</label><br>
+                        <textarea name="title" id="title" cols="80" rows="1"></textarea>
+                        <!-- <span th:if="${#fields.hasErrors('title')}">*</span> -->
+                    </div>
+                    <div>
+                        <label for="questionText">問題文:</label><br>
+                        <textarea name="questionText" id="questionText" cols="80" rows="10"></textarea>
+                    </div>
+                    <div>
+                        <label for="explanation">解説文:</label><br>
+                        <textarea name="explanation" id="explanation" cols="80" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="choice">
+
+                    <div class="form-group">
+                        <label for="choiceText1">選択肢1：</label>
+                        <input type="text" th:field="*{choiceText1}" class="form-control form-control-lg">
+                        <!-- <span th:if="${#fields.hasErrors('title')}">*</span> -->
+                        <input type="checkbox" th:text="正解" th:field="*{checkbox1}">
+                    </div>
+                    <div class="form-group">
+                        <label for="choiceText2">選択肢2：</label>
+                        <input type="text" th:field="*{choiceText2}" class="form-control form-control-lg">
+                        <!-- <span th:if="${#fields.hasErrors('title')}">*</span> -->
+                        <input type="checkbox" th:text="正解" th:field="*{checkbox2}">
+                    </div>
+                    <div class="form-group">
+                        <label for="choiceText3">選択肢3：</label>
+                        <input type="text" th:field="*{choiceText3}" class="form-control form-control-lg">
+                        <!-- <span th:if="${#fields.hasErrors('title')}">*</span> -->
+                        <input type="checkbox" th:text="正解" th:field="*{checkbox3}">
+                    </div>
+                    <div class="form-group">
+                        <label for="choiceText4">選択肢4：</label>
+                        <input type="text" th:field="*{choiceText4}" class="form-control form-control-lg">
+                        <!-- <span th:if="${#fields.hasErrors('title')}">*</span> -->
+                        <input type="checkbox" th:text="正解" th:field="*{checkbox4}">
+                    </div>
+
+
+
+                    <input type="submit" class="btn btn-info btn-user btn-block" value="登録">
+                </div>
+            </form><br>
+
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

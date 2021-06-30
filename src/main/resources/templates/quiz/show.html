@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+
+<body style="background-color:#d4edfa;">
+    <div class="container">
+        <div>
+            <h1>【問題】</h1>
+
+            <h2 style="color: 
+    blue; border: solid royalblue; 
+    font-family:Meiryo UI" th:text="*{quiz.questionText}"></h2>
+        </div>
+        <div>
+            <form th:action="@{/quizzes/{id}/check(id=*{id})}" th:method="patch" th:object=${quiz}>
+                <ul th:each="choice : ${quiz.choices}" style="color: #1e366a; list-style-type: none;">
+                    <li>
+                        
+                            <input type="radio"  th:id="${#ids.seq('choice_')}" name="choice"
+                            th:value="${choice.id}"  style="cursor: pointer;" >
+                            <label th:for="${#ids.prev('choice_')}" th:text="${choice.choiceText}" style="cursor: pointer;"></label>
+                    </li>
+                </ul>
+                <a th:href="@{/quizzes}" class="btn btn-lg btn-success">戻る</a>
+
+                <input type="submit" value="解答" class="btn btn-danger btn-lg">
+
+            </form>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

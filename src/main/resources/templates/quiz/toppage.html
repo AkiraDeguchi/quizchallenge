@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>挑戦するクイズを選んでね</title>
+    <link rel="stylesheet" href="css/toppage.css">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+
+<body style="background-color:#d4edfa;">
+
+    <div class="container">
+        <h1>クイズに挑戦しよう</h1>
+        <a class="admin" th:href="@{/new}" th:text="管理者ページへ"></a>
+        <table class="table table-striped">
+            <thead class="table table-dark">
+
+                <th>一覧</th>
+            </thead>
+            <tbody>
+                <tr th:each="quiz : ${qlist}" th:object="${quiz}">
+                    <td class="whole">
+                        <a th:href="@{/quizzes/{id}(id=*{id})}" th:text="*{title}"></a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</body>
+
+</html>

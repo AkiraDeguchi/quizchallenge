@@ -1,0 +1,23 @@
+/* .container{
+    background-color:#b2dbef;
+} */
+
+h1{
+    color: #ffffff; 
+    text-align: center;
+    padding: .5em;
+    font-size: large;
+    font-family:Meiryo UI;
+    font:bold;
+    background-image: url("../img/wp_beach.jpg");
+    height: 2em;
+    
+}
+
+td a{color: #0011ff;}
+
+.admin{
+    float: right;
+}
+
+/* background-color:#0b72ae; */

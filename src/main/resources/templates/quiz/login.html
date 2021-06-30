@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <th:block th:insert="fragments/base :: header"></th:block>
+
+</head>
+
+<body class="bg-gradient-info">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <!-- Card -->
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image">
+              </div>
+              <div class="col-lg-6">
+                <div class="p-5">
+
+
+                  <div class="text-center">
+                    <h2 class="h2 text-gray-900 mb-4 ">
+                      ログイン
+                    </h2>
+                  </div>
+
+                  <div class="alert alert-danger" th:if="${param.error}">
+                    <small>ユーザ名またはパスワードが正しくありません</small>
+                  </div>
+                  <form th:action="@{/login}" th:method="post" novalidate>
+                    <div class="form-group">
+                      <label for="username">ユーザー名：</label>
+                      <input type="text" name="username" class="form-control form-control-user">
+                    </div>
+                    <div class="form-group">
+                      <label for="username">パスワード：</label>
+                      <input type="password" name="password" class="form-control form-control-user">
+                    </div>
+                    <button class="btn btn-outline-info btn-user btn-block">
+                      ログイン</button>
+                  </form>
+                  <a th:href="@{/register}">新規登録へ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <th:block th:insert="fragments/base :: scripts"></th:block>
+</body>
+
+</html>

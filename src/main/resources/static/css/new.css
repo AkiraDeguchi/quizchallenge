@@ -1,0 +1,12 @@
+.choice{
+    float: right;
+}
+.question{
+    float: left;
+}
+.data{
+    float: right;
+}
+.back{
+    float: left;
+}
